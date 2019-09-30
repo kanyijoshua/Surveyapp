@@ -1,5 +1,4 @@
-﻿@using Surveyapp.Models;
-@model SurveyCategory
+﻿@model IEnumerable<Surveyapp.Models.SurveyCategory>
 @{
     ViewData["Title"] = "Details";
 }
@@ -10,43 +9,46 @@
     <h4>Survey</h4>
     <hr />
     @*<dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Startdate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Startdate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Surveyer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Surveyer.Id)
-        </dd>
-    </dl>*@
-    <a class="btn btn-primary" asp-controller="Surveys" asp-action="Index">
-        @Html.DisplayFor(model => model.CategoryName)
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.name)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Startdate)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Startdate)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.status)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.status)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Surveyer)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Surveyer.Id)
+            </dd>
+        </dl>*@
+</div>
+@foreach (var item in Model)
+{
+    <a class="btn btn-primary" asp-controller="ResponseTypes" asp-action="Index" style="width:80%">
+        @Html.DisplayFor(modelItem => item.CategoryName)
     </a>
-
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <hr/>
+}
+@*<div>
+    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@

@@ -50,14 +50,16 @@ namespace Surveyapp.Controllers
                 return NotFound();
             }
 
-            var SurveyCategory = await _context.SurveyCategory
-                .FirstOrDefaultAsync(m => m.SurveyId == id);
-            if (SurveyCategory == null)
+            var SurveyCategory = _context.SurveyCategory
+                .Include(s=>s.Survey)
+                .Where(m => m.SurveyId == id);
+                //.FirstOrDefaultAsync(m => m.SurveyId == id);
+            if (SurveyCategory==null)
             {
                 return View("error");
             }
 
-            return View("Details",SurveyCategory);
+            return View("Details",await SurveyCategory.ToListAsync());
         }
 
         // GET: Results/Create
