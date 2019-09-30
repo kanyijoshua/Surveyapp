@@ -76,9 +76,9 @@ namespace Surveyapp.Controllers
             var respDictonary = new Dictionary<string, string>();
             if (responseDictionary.Length>0)
             {
-                for (int i = 1; i < responseDictionary.Length; i++)
+                for (int i = 0; i < (responseDictionary.Length); i++)
                 {
-                    respDictonary.Add(i.ToString(), responseDictionary[i]);
+                    respDictonary.Add(((i)+1).ToString(), responseDictionary[i]);
                 }
                 /*var dictionary = responseDictionary.ToDictionary(item => item.Key,
                     item => item.Value);*/
