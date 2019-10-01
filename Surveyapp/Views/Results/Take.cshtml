@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Surveyapp.Models.Question>
+@{
+    ViewData["Title"] = "Take Survey";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Details</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Question Number
+            </th>
+            <th>
+                Question content
+            </th>
+            <th>
+                Select a choice
+            </th>
+            <th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.question)
+                </td>
+                <td>
+                    @foreach(var opt in item.ResponseType.ResponseDictionary){
+                        <input type="radio" value =" @opt.Key" name="Options" />  @opt.Value<br/>
+                    }
+                </td>
+    </tr>
+    
+}
+</tbody>
+</table>
+@*<a class="btn btn-primary" asp-controller="Results" asp-action="Take" style="width:80%">
+        @Html.DisplayFor(modelItem => item.Id)
+</a>*@

@@ -43,7 +43,8 @@
 </div>
 @foreach (var item in Model)
 {
-    <a class="btn btn-primary" asp-controller="ResponseTypes" asp-action="Index" style="width:80%">
+    <a class="btn btn-primary" asp-controller="Results" asp-action="Subject" 
+    asp-route-id="@item.Id" style="width:80%">
         @Html.DisplayFor(modelItem => item.CategoryName)
     </a>
     <hr/>

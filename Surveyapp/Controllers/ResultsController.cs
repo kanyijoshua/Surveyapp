@@ -62,6 +62,40 @@ namespace Surveyapp.Controllers
             return View("Details",await SurveyCategory.ToListAsync());
         }
 
+ public async Task<IActionResult> Take(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var SurveyCategory = _context.Question
+                .Include(q=>q.ResponseType)
+                .Where(m => m.SubjectId == id);
+                //.FirstOrDefaultAsync(m => m.SurveyId == id);
+            if (SurveyCategory==null)
+            {
+                return View("error");
+            }
+            return View("Take",await SurveyCategory.ToListAsync());
+        }
+
+public async Task<IActionResult> Subject(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var SurveySubject = _context.SurveySubject
+                .Include(s=>s.Category)
+                .Where(m => m.CategoryId == id);
+                //.FirstOrDefaultAsync(m => m.SurveyId == id);
+            if (SurveySubject==null)
+            {
+                return View("error");
+            }
+            return View("Subject",await SurveySubject.ToListAsync());
+        }
+
         // GET: Results/Create
         public IActionResult Create()
         {

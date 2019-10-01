@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Surveyapp.Models.SurveySubject>
+@{
+    ViewData["Title"] = "Take Survey";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Subjects</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name of the officer
+            </th>
+            <th>
+                State Department
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateCorporation)
+        </td>
+        <td>
+            <a class="btn btn-primary" asp-controller="Results" asp-action="Take" 
+                asp-route-id="@item.Id" style="width:80%">Take
+            </a>     
+        </td>
+    </tr>
+}
